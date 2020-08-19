@@ -1,0 +1,10 @@
+version: '3'
+services:
+    microservice:
+        build:
+            context: "."
+            dockerfile: ./builds/Dockerfile.dev
+        ports:
+            - "80:80"
+        volumes: 
+            - ./:/opt

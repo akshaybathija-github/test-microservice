@@ -51,10 +51,14 @@ def predict():
         """
     json_payload = request.json
     inference_payload = pd.DataFrame(json_payload)
+    app.logger.info('in app: JSON payload:\n %s',json_payload)
     # scale the input
+    app.logger.info('in app: Inference payload DataFrame:\n %s',inference_payload)
     scaled_payload = scale(inference_payload)
     # get an output prediction from the pretrained model, clf
+    app.logger.info('in app: Scaling Payload:\n %s',scaled_payload)
     prediction = list(clf.predict(scaled_payload))
+    app.logger.info('in app: prediction: %s',prediction)
     return jsonify({'prediction': prediction})
 
 if __name__ == "__main__":
